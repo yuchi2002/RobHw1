@@ -9,7 +9,23 @@ endif()
 find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+ament_target_dependencies(monitor_node
+  rclcpp
+  std_msgs  # 显式声明消息依赖
+)
+
+add_executable(monitor_node src/monitor.cpp)
+target_link_libraries(monitor_node
+  ${rclcpp_LIBRARIES}
+)
+
+install(TARGETS
+  monitor_node
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

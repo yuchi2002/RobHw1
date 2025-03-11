@@ -9,6 +9,15 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 
+add_executable(finance_node src/finance.cpp)
+ament_target_dependencies(finance_node rclcpp std_msgs)
+
+# 修改安装路径为标准位置
+install(TARGETS
+  finance_node
+  DESTINATION lib  # 简化为lib
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
