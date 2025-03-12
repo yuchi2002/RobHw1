@@ -31,7 +31,7 @@ private:
         
         // 处理申请并回复
         auto response = std_msgs::msg::String();
-        response.data = "Application approved by " + this->get_name();
+        response.data = std::string("Application approved by ") + this->get_name();
         approval_pub_->publish(response);
     }
 

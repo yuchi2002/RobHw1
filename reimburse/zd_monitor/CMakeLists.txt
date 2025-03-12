@@ -11,12 +11,12 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+add_executable(monitor_node src/monitor.cpp)
 ament_target_dependencies(monitor_node
   rclcpp
   std_msgs  # 显式声明消息依赖
 )
 
-add_executable(monitor_node src/monitor.cpp)
 target_link_libraries(monitor_node
   ${rclcpp_LIBRARIES}
 )

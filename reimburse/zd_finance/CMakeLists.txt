@@ -10,7 +10,9 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 
 add_executable(finance_node src/finance.cpp)
-ament_target_dependencies(finance_node rclcpp std_msgs)
+ament_target_dependencies(finance_node
+  rclcpp
+  std_msgs)
 
 # 修改安装路径为标准位置
 install(TARGETS
