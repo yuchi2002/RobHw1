@@ -8,16 +8,17 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
 
 add_executable(finance_node src/finance.cpp)
 ament_target_dependencies(finance_node
   rclcpp
   std_msgs)
 
-# 修改安装路径为标准位置
+
 install(TARGETS
   finance_node
-  DESTINATION lib  # 简化为lib
+  DESTINATION lib 
 )
 
 if(BUILD_TESTING)
