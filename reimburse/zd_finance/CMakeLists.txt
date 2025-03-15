@@ -14,11 +14,16 @@ add_executable(finance_node src/finance.cpp)
 ament_target_dependencies(finance_node
   rclcpp
   std_msgs)
-
+  
+# 需要添加以下内容
+target_link_libraries(finance_node
+  ${rclcpp_LIBRARIES}
+  std_msgs::std_msgs__rosidl_typesupport_cpp  # 显式链接消息支持库
+)
 
 install(TARGETS
   finance_node
-  DESTINATION lib 
+  DESTINATION lib/${PROJECT_NAME}  # 添加包名子目录
 )
 
 if(BUILD_TESTING)
